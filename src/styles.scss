@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'ag-grid-community/dist/styles/ag-grid.css';
+@import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+
+.ag-status-bar-right {
+    min-height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+app-selection-button, app-selected-records {
+    margin-right: 10px;
+}

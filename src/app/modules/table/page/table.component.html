@@ -1,0 +1,11 @@
+<button class="btn" (click)="getData()">GET DATA</button>
+<ag-grid-angular 
+    #agGrid
+    class="ag-theme-balham"
+    [modules]="modules"
+    [gridOptions]="gridOptions"
+    [rowData]="rowData | async"
+    [statusBar]="statusBar"
+    [frameworkComponents]="frameworkComponents" 
+    [columnDefs]="columnDefs">
+</ag-grid-angular>
