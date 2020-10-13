@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SelectedRecordsComponent, SelectionButtonComponent, TotalRecordsComponent } from './components/toolbar';
 import { TableComponent } from './page/table.component';
 
 export const routes: Routes = [

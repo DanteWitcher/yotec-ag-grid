@@ -14,6 +14,15 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
+## Run Dev mode
+
+1. Run `npm run api` to run json-server.
+2. Run `npm run start` to build and run the project in dev mode
+
+or 
+
+just use `npm run dev`;
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).

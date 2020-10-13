@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./selection-button.component.scss']
 })
 export class SelectionButtonComponent {
+    private readonly fieldName = 'checkbox';
     public isSelectionMode = false;
     public params: any;
 
@@ -16,6 +17,6 @@ export class SelectionButtonComponent {
     public showSelectionMode(): void {
         this.isSelectionMode = !this.isSelectionMode;
 
-        this.params.columnApi.setColumnVisible('checkbox', this.isSelectionMode);
+        this.params.columnApi.setColumnVisible(this.fieldName, this.isSelectionMode);
     }
 }

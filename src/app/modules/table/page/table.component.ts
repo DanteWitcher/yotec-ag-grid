@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { GridOptions } from '@ag-grid-community/core';
-import { AllModules } from '@ag-grid-enterprise/all-modules';
+import { Observable } from 'rxjs';
+import { GridOptions } from 'ag-grid-community';
+import 'ag-grid-enterprise';
+
 import { DataService } from 'src/app/core/data.service';
 import { IEntity } from 'src/app/core/interfaces/entity.interface';
-import { Observable } from 'rxjs';
-import { DESCRIPTION, THUMBNAIL, TITLE, PUBLISHED, DEFAULTS } from '../options';
+import { DESCRIPTION, THUMBNAIL, TITLE, PUBLISHED, DEFAULTS, CHECKBOX } from '../options';
 import { SelectedRecordsComponent, SelectionButtonComponent, TotalRecordsComponent } from '../components/toolbar';
-import { CHECKBOX } from '../options/column-defs/checkbox';
 
 @Component({
   selector: 'app-table',
@@ -23,7 +23,6 @@ export class TableComponent implements OnInit {
   public columnDefs: any[];
 
   constructor(private dataService: DataService) {
-    this.modules = AllModules;
     this.gridOptions = {
       defaultColDef: DEFAULTS,
       rowSelection: 'multiple',
@@ -31,6 +30,7 @@ export class TableComponent implements OnInit {
       suppressCellSelection: true,
       suppressRowClickSelection: true,
       enableRangeSelection: true,
+      getContextMenuItems: (params) => this.getContextMenuItems(params),
     };
     this.frameworkComponents = {
       selectionButtonComponent: SelectionButtonComponent,
@@ -59,10 +59,27 @@ export class TableComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.getData();
+    this.rowData = this.getData();
   }
 
-  public getData(): void {
-    this.rowData = this.dataService.getEntities();
+  public getData(): Observable<IEntity[]> {
+    return this.dataService.getEntities();
+  }
+
+  public getContextMenuItems(params: any): any[] {
+    const url = params.node.data.title;
+
+    return [
+      'copy',
+      'copyWithHeaders',
+      'separator',
+      {
+        icon: `<span class="ag-icon ag-icon-linked"></span>`,
+        name: 'Open in new tab',
+        action: () => {
+           window.open(url, '_blank');
+        }
+      }
+    ];
   }
 }

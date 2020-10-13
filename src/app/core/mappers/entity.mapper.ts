@@ -2,7 +2,7 @@ import { Fields } from '../enums/fields.enum';
 import { IEntity } from '../interfaces/entity.interface';
 
 export class EntityMapper {
-    static map(data: any): IEntity {
+    static map(entity: any): IEntity {
         const getTitle = (title: string, id: string): string => {
             const regexp = /XXXX/gi;
 
@@ -10,11 +10,11 @@ export class EntityMapper {
         };
 
         return {
-            [Fields.videoId]: data.videoId,
-            [Fields.title]: getTitle(data.title, data.videoId),
-            [Fields.description]: data.description,
-            [Fields.publishedAt]: data.publishedAt,
-            [Fields.thumbnails]: data.thumbnails,
+            [Fields.videoId]: entity.videoId,
+            [Fields.title]: getTitle(entity.title, entity.videoId),
+            [Fields.description]: entity.description,
+            [Fields.publishedAt]: entity.publishedAt,
+            [Fields.thumbnails]: entity.thumbnails,
         };
     }
 }

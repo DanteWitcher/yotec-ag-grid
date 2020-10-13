@@ -12,7 +12,7 @@ export class SelectedRecordsComponent {
         this.params = params;
     }
 
-    public getCount(): void {
+    public getCount(): number {
         return this.params.api.getSelectedRows().length;
     }
 }

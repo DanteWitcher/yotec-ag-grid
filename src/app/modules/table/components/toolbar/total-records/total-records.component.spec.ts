@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AgGridModule } from 'ag-grid-angular';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { TableComponent } from '../../../page/table.component';
 
 import { TotalRecordsComponent } from './total-records.component';
 
@@ -8,7 +11,13 @@ describe('TotalRecordsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TotalRecordsComponent ]
+      imports: [
+        AgGridModule.withComponents([
+            TableComponent,
+            TotalRecordsComponent,
+        ])
+      ],
+      declarations: [ TotalRecordsComponent, TableComponent ]
     })
     .compileComponents();
   }));
@@ -16,6 +25,8 @@ describe('TotalRecordsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TotalRecordsComponent);
     component = fixture.componentInstance;
+
+    spyOn(component, 'getCount').and.returnValue(5);
     fixture.detectChanges();
   });
 

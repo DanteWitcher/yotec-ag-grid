@@ -1,4 +1,4 @@
-import { Fields } from '../enums/fields.enum'
+import { Fields } from '../enums/fields.enum';
 
 export interface IEntity {
     [Fields.videoId]: string;

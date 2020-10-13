@@ -16,6 +16,8 @@ describe('SelectedRecordsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SelectedRecordsComponent);
     component = fixture.componentInstance;
+
+    spyOn(component, 'getCount').and.returnValue(3);
     fixture.detectChanges();
   });
 
